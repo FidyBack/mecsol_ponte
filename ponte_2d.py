@@ -1,6 +1,7 @@
 import numpy as np
 from funcoesTermosol import *
 from math import sqrt
+from solve import solve
 
 # Funções de entrada
 [nn,N,nm,Inc,nc,F,nr,R] = importa('entrada.xlsx')
@@ -59,7 +60,7 @@ def vet_des_nod(nn, N, nm, Inc, nc, F, nr, R):
     MRcc = np.delete(MRlin, R, 1)
 
     # Inversão e Multiplicação
-    U = np.linalg.solve(MRcc, Fcc)
+    U = solve(MRcc, Fcc)
     return(U, mrg)
 
 desloc = vet_des_nod(nn, N, nm, Inc, nc, F, nr, R)

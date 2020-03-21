@@ -2,6 +2,8 @@ import numpy as np
 from funcoesTermosol import *
 from math import sqrt
 from solve import solve
+import itertools
+
 
 # Funções de entrada
 [nn,N,nm,Inc,nc,F,nr,R] = importa('entrada.xlsx')
@@ -52,14 +54,12 @@ def vet_des_nod(nn, N, nm, Inc, nc, F, nr, R):
         mrg[bars[i].no2.lib[0]-1:bars[i].no2.lib[1] , bars[i].no2.lib[0]-1:bars[i].no2.lib[1]] += bars[i].mat_rig[2:4, 2:4]
 
     # Condições de Contorno
-    for i in R:
-        print(i)
-
     Fcc = np.delete(F, R, 0)
     MRlin = np.delete(mrg, R, 0)
     MRcc = np.delete(MRlin, R, 1)
 
     # Inversão e Multiplicação
+    Fcc = list(itertools.chain(*Fcc))
     U = solve(MRcc, Fcc)
     return(U, mrg)
 

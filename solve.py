@@ -31,3 +31,11 @@ def solve(rigidez, forcas):
 
 
     return deslocamento
+
+rigidez = np.array([[1.59, -0.40,-0.54], 
+                    [-0.40, 1.70, 0.40], 
+                    [-0.54, 0.40, 0.54]])
+rigidez *= 10**8
+forcas = np.array([0, 150, -100])
+
+print(solve(rigidez, forcas))

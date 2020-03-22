@@ -7,6 +7,7 @@ import itertools
 # Nó
 class Node:
     def __init__(self, number, x, y):
+        self.number = number
         self.x = x
         self.y = y
         self.liberty_degree = [(number*2)-1, number*2]
@@ -23,7 +24,7 @@ class Bar:
                         [c*s, s**2, -c*s, -s**2],
                         [-c**2, -c*s, c**2, c*s],
                         [-c*s, -s**2, c*s, s**2]])
-        
+
         self.rigidity_matrix = ((modulus_of_elasticity * cross_section_area) / lenght)*MR
         self.sin = s
         self.cos = c
@@ -74,28 +75,29 @@ class Solver:
             for line in range(4):
                 for column in range(4):
                     global_rigidity_matrix[bar.liberty_degree[line]-1][bar.liberty_degree[column]-1] += bar.rigidity_matrix[line][column]
-
-        for l in range(len(global_rigidity_matrix)):
-            print(global_rigidity_matrix[l])
-        #Condições de Contorno
+   
+        #Countour Conditions
         contour_loads_vector = np.delete(self.loads_vector, self.restrictions_vector, 0)
         contour_global_rigidity_matrix = np.delete(global_rigidity_matrix, self.restrictions_vector, 0)
         contour_global_rigidity_matrix = np.delete(contour_global_rigidity_matrix, self.restrictions_vector, 1)
         
+        #Solve for U
         contour_displacements_vector = solve(contour_global_rigidity_matrix, contour_loads_vector)
 
+        #Global U
         displacements_vector = np.zeros(self.nodes_number * 2)
         index = np.arange(0, self.nodes_number*2, 1)
         index = np.delete(index, self.restrictions_vector, 0)
-
         for i in range(len(index)):
             displacements_vector[index[i]] = contour_displacements_vector[i]
 
+        #Loads vector = Kg * Ug
         resultant_loads_vector = global_rigidity_matrix.dot(displacements_vector)
 
         tensions_vector = np.zeros(len(bars))
         deformations_vector = np.zeros(len(bars))
 
+        #Tension and Deformation 
         for i in range(len(bars)):
             deformation, tension = bars[i].calculate(displacements_vector)
             tensions_vector[i] = tension
@@ -116,6 +118,10 @@ class Solver:
             print("Solve first")
 
 solver = Solver()
+solver.load("entrada_triangulo")
+solver.solve()
+solver.write("saida_triangulo")
+
 solver.load("entrada_quadrado")
 solver.solve()
 solver.write("saida_quadrado")

@@ -59,7 +59,7 @@ class Solver:
         plota(self.nodes_matrix, self.incidence_matrix)
 
     def solve(self):
-        
+
         nodes = []
         for node in range(self.nodes_number):
             nodes.append(Node(node+1, self.nodes_matrix[0][node], self.nodes_matrix[1][node]))
@@ -99,6 +99,7 @@ class Solver:
 
         self.resultant_loads_vector = resultant_loads_vector
         self.deformations_vector = deformations_vector
+        self.tensions_vector = tensions_vector
         self.displacements_vector= displacements_vector
 
         self.solved = True

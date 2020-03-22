@@ -59,7 +59,6 @@ def vet_des_nod(nn, N, nm, Inc, nc, F, nr, R):
     MRcc = np.delete(MRlin, R, 1)
 
     # Inversão e Multiplicação
-    Fcc = list(itertools.chain(*Fcc))
     U = solve(MRcc, Fcc)
     return(U, mrg)
 

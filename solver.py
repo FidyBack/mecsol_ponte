@@ -23,7 +23,7 @@ class Bar:
                         [c*s, s**2, -c*s, -s**2],
                         [-c**2, -c*s, c**2, c*s],
                         [-c*s, -s**2, c*s, s**2]])
-
+        
         self.rigidity_matrix = ((modulus_of_elasticity * cross_section_area) / lenght)*MR
         self.sin = s
         self.cos = c
@@ -52,7 +52,7 @@ class Solver:
         self.loads_number = data[4]
         self.loads_vector = data[5]
         self.restrictions_number = data[6]
-        self.restrictions_vector = data[7]
+        self.restrictions_vector = [int(x) for x in data[7]]
         self.solved = False
 
     def plot(self):
@@ -65,7 +65,9 @@ class Solver:
             nodes.append(Node(node+1, self.nodes_matrix[0][node], self.nodes_matrix[1][node]))
         
         bars = []
-        global_rigidity_matrix = np.zeros((self.members_number * 2, self.members_number * 2))
+        global_rigidity_matrix = np.zeros((self.nodes_number * 2, self.nodes_number * 2))
+        
+        
         for member in range(self.members_number):
             bar = Bar(nodes[(int(self.incidence_matrix[member][0]))-1], nodes[(int(self.incidence_matrix[member][1]))-1], self.incidence_matrix[member][2], self.incidence_matrix[member][3])
             bars.append(bar)
@@ -73,15 +75,17 @@ class Solver:
                 for column in range(4):
                     global_rigidity_matrix[bar.liberty_degree[line]-1][bar.liberty_degree[column]-1] += bar.rigidity_matrix[line][column]
 
-        # Condições de Contorno
+        for l in range(len(global_rigidity_matrix)):
+            print(global_rigidity_matrix[l])
+        #Condições de Contorno
         contour_loads_vector = np.delete(self.loads_vector, self.restrictions_vector, 0)
         contour_global_rigidity_matrix = np.delete(global_rigidity_matrix, self.restrictions_vector, 0)
         contour_global_rigidity_matrix = np.delete(contour_global_rigidity_matrix, self.restrictions_vector, 1)
-
+        
         contour_displacements_vector = solve(contour_global_rigidity_matrix, contour_loads_vector)
 
-        displacements_vector = np.zeros(self.members_number * 2)
-        index = np.arange(0, self.members_number*2, 1)
+        displacements_vector = np.zeros(self.nodes_number * 2)
+        index = np.arange(0, self.nodes_number*2, 1)
         index = np.delete(index, self.restrictions_vector, 0)
 
         for i in range(len(index)):
@@ -104,6 +108,14 @@ class Solver:
 
         self.solved = True
 
+    def write(self, fille_name):
+
+        if self.solved:
+            geraSaida(fille_name, self.resultant_loads_vector, self.displacements_vector, self.deformations_vector, [], self.tensions_vector)
+        else:
+            print("Solve first")
+
 solver = Solver()
-solver.load('entrada')
+solver.load("entrada_quadrado")
 solver.solve()
+solver.write("saida_quadrado")

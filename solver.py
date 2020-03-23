@@ -130,6 +130,6 @@ solver.load("entrada_quadrado")
 solver.solve()
 solver.write("saida_quadrado")
 
-solver.load("entrada_ponte")
+solver.load("entrada_ponte") #http://www.abenge.org.br/cobenge/arquivos/12/artigos/434-Gustavo%20Cunha.pdf
 solver.solve()
 solver.write("saida_ponte")

@@ -4,6 +4,9 @@ from math import sqrt
 from solve import solve
 import itertools
 
+def printM(a):
+   print('\n \n'.join([' '.join(['{:4.3f}'.format(item) for item in row]) for row in a]))
+
 # Nó
 class Node:
     def __init__(self, number, x, y):
@@ -75,7 +78,7 @@ class Solver:
             for line in range(4):
                 for column in range(4):
                     global_rigidity_matrix[bar.liberty_degree[line]-1][bar.liberty_degree[column]-1] += bar.rigidity_matrix[line][column]
-   
+
         #Countour Conditions
         contour_loads_vector = np.delete(self.loads_vector, self.restrictions_vector, 0)
         contour_global_rigidity_matrix = np.delete(global_rigidity_matrix, self.restrictions_vector, 0)
@@ -118,6 +121,7 @@ class Solver:
             print("Solve first")
 
 solver = Solver()
+
 solver.load("entrada_triangulo")
 solver.solve()
 solver.write("saida_triangulo")
@@ -125,3 +129,7 @@ solver.write("saida_triangulo")
 solver.load("entrada_quadrado")
 solver.solve()
 solver.write("saida_quadrado")
+
+solver.load("entrada_ponte")
+solver.solve()
+solver.write("saida_ponte")

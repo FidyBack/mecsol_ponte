@@ -126,13 +126,27 @@ def geraSaida(nome,Ft,Ut,Epsi,Fi,Ti):
     nome = nome + '.txt'
     f = open(nome,"w+")
     f.write('Reacoes de apoio [N]\n')
-    f.write(str(Ft))
-    f.write('\n\nDeslocamentos [m]\n')
-    f.write(str(Ut))
-    f.write('\n\nDeformacoes []\n')
-    f.write(str(Epsi))
+    
+    n = int(len(Ft) / 2)
+    for i in range(n):
+        f.write("Nó {} x: {:+.2e} y: {:+.2e}\n".format(i+1, Ft[0 + i*2], Ft[1 + i*2]))
+
+    f.write('\nDeslocamentos [m]\n')
+
+    n = int(len(Ut) / 2)
+    for u in range(n):
+        f.write("Nó {} x: {:+.2e} y: {:+.2e}\n".format(u+1, Ut[0 + u*2], Ut[1 + u*2]))
+
+    f.write('\nDeformacoes []\n')
+
+    for u in range(len(Epsi)):
+        f.write("Elemento {}: {:+.2e}\n".format(u+1, Epsi[u]))
+
     f.write('\n\nForcas internas [N]\n')
     f.write(str(Fi))
     f.write('\n\nTensoes internas [Pa]\n')
-    f.write(str(Ti))
+
+    for u in range(len(Ti)):
+        f.write("Elemento {}: {:+.2e}\n".format(u+1, Ti[u]))
+
     f.close()

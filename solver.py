@@ -29,17 +29,19 @@ class Bar:
                         [-c*s, -s**2, c*s, s**2]])
 
         self.rigidity_matrix = ((modulus_of_elasticity * cross_section_area) / lenght)*MR
-        self.sin = s
-        self.cos = c
         self.lenght = lenght
-        self.array = np.array([-self.cos, - self.sin, self.cos, self.sin])
+        self.array = np.array([-c, -s, c, s])
         self.modulus_of_elasticity = modulus_of_elasticity
+        self.cross_section_area = cross_section_area
 
     def calculate(self, displacements_vector):
         liberty_degree = [x - 1 for x in self.liberty_degree]
         displacements_vector = [displacements_vector[i] for i in liberty_degree]
         # return deformation, tension
-        return (1/self.lenght) * self.array.dot(displacements_vector), (self.modulus_of_elasticity/self.lenght) * self.array.dot(displacements_vector)
+        deformation = (1/self.lenght) * self.array.dot(displacements_vector)
+        tension = (self.modulus_of_elasticity/self.lenght) * self.array.dot(displacements_vector)
+        internal_forces = tension * self.cross_section_area
+        return deformation, tension, internal_forces
     
 
 class Solver:
@@ -99,16 +101,19 @@ class Solver:
 
         tensions_vector = np.zeros(len(bars))
         deformations_vector = np.zeros(len(bars))
+        internal_forces_vector = np.zeros(len(bars))
 
         #Tension and Deformation 
         for i in range(len(bars)):
-            deformation, tension = bars[i].calculate(displacements_vector)
+            deformation, tension, internal_forces = bars[i].calculate(displacements_vector)
             tensions_vector[i] = tension
             deformations_vector[i] = deformation
+            internal_forces_vector[i] = internal_forces
 
         self.resultant_loads_vector = resultant_loads_vector
         self.deformations_vector = deformations_vector
         self.tensions_vector = tensions_vector
+        self.internal_forces_vector = internal_forces_vector
         self.displacements_vector= displacements_vector
 
         self.solved = True
@@ -116,7 +121,7 @@ class Solver:
     def write(self, fille_name):
 
         if self.solved:
-            geraSaida(fille_name, self.resultant_loads_vector, self.displacements_vector, self.deformations_vector, [], self.tensions_vector)
+            geraSaida(fille_name, self.resultant_loads_vector, self.displacements_vector, self.deformations_vector, self.internal_forces_vector, self.tensions_vector)
         else:
             print("Solve first")
 
@@ -124,12 +129,15 @@ solver = Solver()
 
 solver.load("entrada_triangulo")
 solver.solve()
+# solver.plot()
 solver.write("saida_triangulo")
 
 solver.load("entrada_quadrado")
 solver.solve()
+# solver.plot()
 solver.write("saida_quadrado")
 
 solver.load("entrada_ponte") #http://www.abenge.org.br/cobenge/arquivos/12/artigos/434-Gustavo%20Cunha.pdf
 solver.solve()
+# solver.plot()
 solver.write("saida_ponte")

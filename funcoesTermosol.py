@@ -19,8 +19,8 @@ from funcoesTermosol import importa
 [nn,N,nm,Inc,nc,F,nr,R] = importa('entrada.xlsx')
 -------------------------------------------------------------------------------
 A funcao 'geraSaida' cria um arquivo nome.txt contendo as reacoes de apoio Ft, 
-deslocamentos Ut, forcas Fi e tensoes Ti internas. As entradas devem ser 
-vetores coluna.
+deslocamentos Ut, deformacoes Epsi, forcas Fi e tensoes Ti internas. 
+As entradas devem ser vetores coluna.
 
 Sugestao de uso:
     
@@ -126,34 +126,16 @@ def geraSaida(nome,Ft,Ut,Epsi,Fi,Ti):
     nome = nome + '.txt'
     f = open(nome,"w+")
     f.write('Reacoes de apoio [N]\n')
-    
-    n = int(len(Ft) / 2)
-    for i in range(n):
-        x = "{:+.2f}".format(Ft[0 + i*2])
-        y = "{:+.2f}".format(Ft[1 + i*2])
-        f.write("Nó {} x: {:>9} y: {:>9}\n".format(i+1, x, y))
-
-    f.write('\nDeslocamentos [m]\n')
-
-    n = int(len(Ut) / 2)
-    for u in range(n):
-        f.write("Nó {} x: {:+.2e} y: {:+.2e}\n".format(u+1, Ut[0 + u*2], Ut[1 + u*2]))
-
-    f.write('\nDeformacoes []\n')
-
-    for u in range(len(Epsi)):
-        f.write("Elemento {}: {:+.2e}\n".format(u+1, Epsi[u]))
-
-    f.write('\nForcas internas [N]\n')
-
-    for u in range(len(Fi)):
-        e = "{:+.2f}".format(Fi[u])
-        f.write("Elemento {}: {:>9}\n".format(u+1, e))
-
-    f.write('\nTensoes internas [KPa]\n')
-
-    for u in range(len(Ti)):
-        e = "{:+.2f}".format(Ti[u]/1000)
-        f.write("Elemento {}: {:>9}\n".format(u+1, e))
-
+    f.write(str(Ft))
+    f.write('\n\nDeslocamentos [m]\n')
+    f.write(str(Ut))
+    f.write('\n\nDeformacoes []\n')
+    f.write(str(Epsi))
+    f.write('\n\nForcas internas [N]\n')
+    f.write(str(Fi))
+    f.write('\n\nTensoes internas [Pa]\n')
+    f.write(str(Ti))
     f.close()
+    
+
+

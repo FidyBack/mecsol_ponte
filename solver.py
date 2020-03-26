@@ -90,7 +90,7 @@ class Solver:
         contour_displacements_vector = solve(contour_global_rigidity_matrix, contour_loads_vector)
 
         #Global U
-        displacements_vector = np.zeros(self.nodes_number * 2)
+        displacements_vector = np.zeros((self.nodes_number * 2, 1))
         index = np.arange(0, self.nodes_number*2, 1)
         index = np.delete(index, self.restrictions_vector, 0)
         for i in range(len(index)):
@@ -98,10 +98,12 @@ class Solver:
 
         #Loads vector = Kg * Ug
         resultant_loads_vector = global_rigidity_matrix.dot(displacements_vector)
+        target_loads_vector = np.delete(resultant_loads_vector, index, 0)
+        
 
-        tensions_vector = np.zeros(len(bars))
-        deformations_vector = np.zeros(len(bars))
-        internal_forces_vector = np.zeros(len(bars))
+        tensions_vector = np.zeros((len(bars), 1))
+        deformations_vector = np.zeros((len(bars), 1))
+        internal_forces_vector = np.zeros((len(bars), 1))
 
         #Tension and Deformation 
         for i in range(len(bars)):
@@ -110,7 +112,7 @@ class Solver:
             deformations_vector[i] = deformation
             internal_forces_vector[i] = internal_forces
 
-        self.resultant_loads_vector = resultant_loads_vector
+        self.target_loads_vector = target_loads_vector
         self.deformations_vector = deformations_vector
         self.tensions_vector = tensions_vector
         self.internal_forces_vector = internal_forces_vector
@@ -121,7 +123,7 @@ class Solver:
     def write(self, fille_name):
 
         if self.solved:
-            geraSaida(fille_name, self.resultant_loads_vector, self.displacements_vector, self.deformations_vector, self.internal_forces_vector, self.tensions_vector)
+            geraSaida(fille_name, self.target_loads_vector, self.displacements_vector, self.deformations_vector, self.internal_forces_vector, self.tensions_vector)
         else:
             print("Solve first")
 
@@ -132,12 +134,12 @@ solver.solve()
 # solver.plot()
 solver.write("saida_triangulo")
 
-solver.load("entrada_quadrado")
-solver.solve()
-# solver.plot()
-solver.write("saida_quadrado")
+# solver.load("entrada_quadrado")
+# solver.solve()
+# # solver.plot()
+# solver.write("saida_quadrado")
 
-solver.load("entrada_ponte") #http://www.abenge.org.br/cobenge/arquivos/12/artigos/434-Gustavo%20Cunha.pdf
-solver.solve()
-# solver.plot()
-solver.write("saida_ponte")
+# solver.load("entrada_ponte") #http://www.abenge.org.br/cobenge/arquivos/12/artigos/434-Gustavo%20Cunha.pdf
+# solver.solve()
+# # solver.plot()
+# solver.write("saida_ponte")

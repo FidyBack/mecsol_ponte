@@ -2,7 +2,7 @@
 import funcoesTermosol as ft
 import numpy as np
 
-tolerancia = 10**-32
+tolerancia = 10**-64
 
 def solve_line(rigidez, forcas, deslocamento, indice):
     a = np.concatenate((rigidez[indice][0:indice], rigidez[indice][indice+1:len(deslocamento)+1]))
@@ -16,7 +16,7 @@ def solve_line(rigidez, forcas, deslocamento, indice):
 
 def solve(rigidez, forcas):
     n = len(forcas)
-    deslocamento = np.zeros(n)
+    deslocamento = np.zeros((n, 1))
       
     for i in range(n):
         deslocamento[i] =  solve_line(rigidez, forcas, deslocamento, i)

@@ -37,7 +37,7 @@ class Bar:
     def calculate(self, displacements_vector):
         liberty_degree = [x - 1 for x in self.liberty_degree]
         displacements_vector = [displacements_vector[i] for i in liberty_degree]
-        # return deformation, tension
+        # return deformation, tension, interna forces
         deformation = (1/self.lenght) * self.array.dot(displacements_vector)
         tension = (self.modulus_of_elasticity/self.lenght) * self.array.dot(displacements_vector)
         internal_forces = tension * self.cross_section_area
@@ -131,15 +131,16 @@ solver = Solver()
 
 solver.load("entrada_triangulo")
 solver.solve()
-# solver.plot()
 solver.write("saida_triangulo")
 
-# solver.load("entrada_quadrado")
-# solver.solve()
-# # solver.plot()
-# solver.write("saida_quadrado")
+solver.load("entrada_quadrado")
+solver.solve()
+solver.write("saida_quadrado")
 
-# solver.load("entrada_ponte") #http://www.abenge.org.br/cobenge/arquivos/12/artigos/434-Gustavo%20Cunha.pdf
-# solver.solve()
-# # solver.plot()
-# solver.write("saida_ponte")
+solver.load("entrada_ponte") #http://www.abenge.org.br/cobenge/arquivos/12/artigos/434-Gustavo%20Cunha.pdf
+solver.solve()
+solver.write("saida_ponte")
+
+solver.load("entrada_teste")
+solver.solve()
+solver.write("saida_teste")

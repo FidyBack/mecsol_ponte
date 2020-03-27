@@ -17,22 +17,14 @@ def solve_line(rigidez, forcas, deslocamento, indice):
 def solve(rigidez, forcas):
     n = len(forcas)
     deslocamento = np.zeros((n, 1))
-      
-    for i in range(n):
-        deslocamento[i] =  solve_line(rigidez, forcas, deslocamento, i)
-
     dif_boll = [False]
     i = 0
     while(False in dif_boll):
-        
-        if(i > n-1):
-            i = 0
 
         deslocamento_dif = deslocamento.copy()
-        deslocamento[i] =  solve_line(rigidez, forcas, deslocamento, i)
+        for i in range(n):
+            deslocamento[i] =  solve_line(rigidez, forcas, deslocamento, i)
         dif = deslocamento - deslocamento_dif
         dif_boll = np.logical_and(dif<  tolerancia, dif> -tolerancia)
-
-        i += 1
 
     return deslocamento

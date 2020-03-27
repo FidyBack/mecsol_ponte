@@ -112,6 +112,7 @@ class Solver:
             deformations_vector[i] = deformation
             internal_forces_vector[i] = internal_forces
 
+        self.resultant_loads_vector = resultant_loads_vector
         self.target_loads_vector = target_loads_vector
         self.deformations_vector = deformations_vector
         self.tensions_vector = tensions_vector
@@ -124,6 +125,7 @@ class Solver:
 
         if self.solved:
             geraSaida(fille_name, self.target_loads_vector, self.displacements_vector, self.deformations_vector, self.internal_forces_vector, self.tensions_vector)
+            geraSaida_(fille_name, self.resultant_loads_vector, self.displacements_vector, self.deformations_vector, self.internal_forces_vector, self.tensions_vector)
         else:
             print("Solve first")
 
@@ -142,5 +144,11 @@ solver.solve()
 solver.write("saida_ponte")
 
 solver.load("entrada_teste")
+solver.plot()
 solver.solve()
 solver.write("saida_teste")
+
+solver.load("entrada_teste2")
+solver.plot()
+solver.solve()
+solver.write("saida_teste2")

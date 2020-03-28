@@ -132,26 +132,26 @@ class Solver:
 
 solver = Solver()
 
-solver.load("entrada_triangulo")
-solver.plot()
+solver.load("entradas\entrada_triangulo")
+#solver.plot()
 solver.solve()
-solver.plot()
-solver.write("saida_triangulo")
+#solver.plot()
+solver.write("saidas\saida_triangulo")
 
-solver.load("entrada_ponte") #http://www.abenge.org.br/cobenge/arquivos/12/artigos/434-Gustavo%20Cunha.pdf
-solver.plot()
+solver.load("entradas\entrada_ponte") #http://www.abenge.org.br/cobenge/arquivos/12/artigos/434-Gustavo%20Cunha.pdf
+#solver.plot()
 solver.solve()
-solver.plot()
-solver.write("saida_ponte")
+#solver.plot()
+solver.write("saidas\saida_ponte")
 
-solver.load("entrada_teste")
-solver.plot()
+solver.load("entradas\entrada_teste")
+#solver.plot()
 solver.solve()
-solver.plot()
-solver.write("saida_teste")
+#solver.plot()
+solver.write("saidas\saida_teste")
 
-solver.load("entrada_teste_extra")
-solver.plot()
+solver.load("entradas\entrada_teste_extra")
+#solver.plot()
 solver.solve()
-solver.plot()
-solver.write("saida_teste_extra")
+#solver.plot()
+solver.write("saidas\saida_teste_extra")

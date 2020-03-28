@@ -1,0 +1,24 @@
+Forças e Reações de apoio [N]
+Nó 01 x:     75.00 y:      0.00
+Nó 02 x:   -225.00 y:    100.00
+Nó 03 x:    150.00 y:   -100.00
+
+Deslocamentos [m]
+Nó 01 x: +0.00e+00 y: -9.52e-07
+Nó 02 x: +0.00e+00 y: +0.00e+00
+Nó 03 x: +1.61e-06 y: -4.02e-06
+
+Deformacoes []
+Elemento 01: +2.38e-06
+Elemento 02: +5.36e-06
+Elemento 03: -2.98e-06
+
+Forcas internas [kN]
+Elemento 01:      0.10
+Elemento 02:      0.22
+Elemento 03:     -0.12
+
+Tensoes internas [KPa]
+Elemento 01:    500.00
+Elemento 02:   1125.00
+Elemento 03:   -625.00

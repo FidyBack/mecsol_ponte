@@ -140,20 +140,13 @@ def geraSaida(nome,Ft,Ut,Epsi,Fi,Ti):
 def geraSaida_(nome,Ft,Ut,Epsi,Fi,Ti):
     nome = nome + '_.txt'
     f = open(nome,"w+")
-    f.write('Reacoes de apoio [N]\n')
+    f.write('Forças e Reações de apoio [N]\n')
 
     n = int(len(Ft) / 2)
-    xs = 0
-    ys = 0
     for i in range(n):
         x = "{:.2f}".format(Ft[0 + i*2][0])
-        xs += Ft[0 + i*2][0]
         y = "{:.2f}".format(Ft[1 + i*2][0])
         f.write("Nó {:02d} x: {:>9} y: {:>9}\n".format(i+1, x, y))
-        ys += Ft[1 + i*2][0]
-    xs = "{:.2f}".format(xs)
-    ys = "{:.2f}".format(ys)
-    f.write("\nSoma  x: {:>9} y: {:>9}\n".format(xs, ys))
 
     f.write('\nDeslocamentos [m]\n')
 
@@ -166,10 +159,10 @@ def geraSaida_(nome,Ft,Ut,Epsi,Fi,Ti):
     for u in range(len(Epsi)):
         f.write("Elemento {:02d}: {:+.2e}\n".format(u+1, Epsi[u][0]))
 
-    f.write('\nForcas internas [N]\n')
+    f.write('\nForcas internas [kN]\n')
 
     for u in range(len(Fi)):
-        e = "{:.2f}".format(Fi[u][0])
+        e = "{:.2f}".format(Fi[u][0]/1000)
         f.write("Elemento {:02d}: {:>9}\n".format(u+1, e))
 
     f.write('\nTensoes internas [KPa]\n')

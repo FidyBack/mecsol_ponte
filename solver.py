@@ -4,9 +4,6 @@ from math import sqrt
 from solve import solve
 import itertools
 
-def printM(a):
-   print('\n \n'.join([' '.join(['{:4.3f}'.format(item) for item in row]) for row in a]))
-
 # Nó
 class Node:
     def __init__(self, number, x, y):
@@ -39,7 +36,7 @@ class Bar:
         displacements_vector = [displacements_vector[i] for i in liberty_degree]
         # return deformation, tension, interna forces
         deformation = (1/self.lenght) * self.array.dot(displacements_vector)
-        tension = (self.modulus_of_elasticity/self.lenght) * self.array.dot(displacements_vector)
+        tension = self.modulus_of_elasticity * deformation
         internal_forces = tension * self.cross_section_area
         return deformation, tension, internal_forces
     
@@ -96,6 +93,10 @@ class Solver:
         for i in range(len(index)):
             displacements_vector[index[i]] = contour_displacements_vector[i]
 
+
+        for i in range(self.nodes_number): # Deslocamentos multiplicados por 10,000 para visualização
+            self.nodes_matrix[0][i] += displacements_vector[i*2] * 10000
+            self.nodes_matrix[1][i] += displacements_vector[1 + i*2] * 10000
         #Loads vector = Kg * Ug
         resultant_loads_vector = global_rigidity_matrix.dot(displacements_vector)
         target_loads_vector = np.delete(resultant_loads_vector, index, 0)
@@ -132,23 +133,25 @@ class Solver:
 solver = Solver()
 
 solver.load("entrada_triangulo")
+solver.plot()
 solver.solve()
+solver.plot()
 solver.write("saida_triangulo")
 
-solver.load("entrada_quadrado")
-solver.solve()
-solver.write("saida_quadrado")
-
 solver.load("entrada_ponte") #http://www.abenge.org.br/cobenge/arquivos/12/artigos/434-Gustavo%20Cunha.pdf
+solver.plot()
 solver.solve()
+solver.plot()
 solver.write("saida_ponte")
 
 solver.load("entrada_teste")
 solver.plot()
 solver.solve()
+solver.plot()
 solver.write("saida_teste")
 
-solver.load("entrada_teste2")
+solver.load("entrada_teste_extra")
 solver.plot()
 solver.solve()
-solver.write("saida_teste2")
+solver.plot()
+solver.write("saida_teste_extra")

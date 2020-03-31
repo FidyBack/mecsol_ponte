@@ -1,0 +1,121 @@
+Forças e Reações de apoio [N]
+Nó 01 x: -47004.45 y: -23005.47
+Nó 02 x:     -0.00 y:  23886.65
+Nó 03 x:     -0.00 y:  22688.71
+Nó 04 x:      0.00 y:  74984.51
+Nó 05 x: -32995.55 y: 101445.60
+Nó 06 x:      0.00 y: -50000.00
+Nó 07 x:     -0.00 y:     -0.00
+Nó 08 x:      0.00 y:      0.00
+Nó 09 x:      0.00 y:      0.00
+Nó 10 x:     -0.00 y: -50000.00
+Nó 11 x:     -0.00 y:      0.00
+Nó 12 x:  40000.00 y:     -0.00
+Nó 13 x:     -0.00 y: -50000.00
+Nó 14 x:  40000.00 y: -50000.00
+
+Deslocamentos [m]
+Nó 01 x: +0.00e+00 y: +0.00e+00
+Nó 02 x: +8.08e-06 y: +0.00e+00
+Nó 03 x: +9.60e-06 y: +0.00e+00
+Nó 04 x: +1.11e-05 y: +0.00e+00
+Nó 05 x: +0.00e+00 y: +0.00e+00
+Nó 06 x: +3.65e-05 y: -1.46e-05
+Nó 07 x: +3.43e-05 y: -7.64e-06
+Nó 08 x: +4.22e-05 y: -1.61e-05
+Nó 09 x: +5.02e-05 y: -3.42e-05
+Nó 10 x: +7.71e-05 y: -2.69e-05
+Nó 11 x: +7.95e-05 y: -3.22e-05
+Nó 12 x: +9.89e-05 y: -5.70e-05
+Nó 13 x: +1.22e-04 y: -5.06e-05
+Nó 14 x: +1.36e-04 y: -7.38e-05
+
+Deformacoes []
+Elemento 01: +1.62e-06
+Elemento 02: +3.03e-07
+Elemento 03: +3.03e-07
+Elemento 04: -2.22e-06
+Elemento 05: +2.19e-06
+Elemento 06: -2.92e-06
+Elemento 07: +1.86e-06
+Elemento 08: -1.53e-06
+Elemento 09: -3.08e-06
+Elemento 10: -3.22e-06
+Elemento 11: +4.89e-07
+Elemento 12: -6.83e-06
+Elemento 13: -4.45e-07
+Elemento 14: +1.59e-06
+Elemento 15: +1.59e-06
+Elemento 16: +2.82e-06
+Elemento 17: -3.86e-06
+Elemento 18: +2.07e-06
+Elemento 19: -3.22e-06
+Elemento 20: -2.73e-06
+Elemento 21: -4.56e-06
+Elemento 22: +4.88e-07
+Elemento 23: +3.88e-06
+Elemento 24: +2.13e-06
+Elemento 25: -3.69e-06
+Elemento 26: -1.68e-06
+Elemento 27: -3.37e-06
+Elemento 28: +2.69e-06
+
+Forcas internas [kN]
+Elemento 01:     24.00
+Elemento 02:      4.50
+Elemento 03:      4.50
+Elemento 04:    -33.00
+Elemento 05:     32.53
+Elemento 06:    -43.39
+Elemento 07:     27.58
+Elemento 08:    -22.69
+Elemento 09:    -45.77
+Elemento 10:    -47.75
+Elemento 11:      7.26
+Elemento 12:   -101.45
+Elemento 13:     -6.61
+Elemento 14:     23.55
+Elemento 15:     23.55
+Elemento 16:     41.89
+Elemento 17:    -57.25
+Elemento 18:     30.68
+Elemento 19:    -47.75
+Elemento 20:    -40.57
+Elemento 21:    -67.63
+Elemento 22:      7.25
+Elemento 23:     57.63
+Elemento 24:     31.64
+Elemento 25:    -54.74
+Elemento 26:    -24.93
+Elemento 27:    -50.00
+Elemento 28:     40.00
+
+Tensoes internas [KPa]
+Elemento 01:    339.52
+Elemento 02:     63.64
+Elemento 03:     63.64
+Elemento 04:   -466.79
+Elemento 05:    460.27
+Elemento 06:   -613.81
+Elemento 07:    390.15
+Elemento 08:   -320.98
+Elemento 09:   -647.49
+Elemento 10:   -675.55
+Elemento 11:    102.65
+Elemento 12:  -1435.16
+Elemento 13:    -93.55
+Elemento 14:    333.22
+Elemento 15:    333.22
+Elemento 16:    592.57
+Elemento 17:   -809.90
+Elemento 18:    434.09
+Elemento 19:   -675.55
+Elemento 20:   -573.90
+Elemento 21:   -956.77
+Elemento 22:    102.54
+Elemento 23:    815.30
+Elemento 24:    447.55
+Elemento 25:   -774.41
+Elemento 26:   -352.73
+Elemento 27:   -707.36
+Elemento 28:    565.88

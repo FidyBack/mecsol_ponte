@@ -81,13 +81,14 @@ def importa(entradaNome):
     nm = int(incid.cell(1,5).value)
                  
     # Matriz de incidencia
-    Inc = np.zeros((nm,4))
+    Inc = np.zeros((nm,5))
     
     for c in range(nm):
         Inc[c,0] = int(incid.cell(c+1,0).value)
         Inc[c,1] = int(incid.cell(c+1,1).value)
         Inc[c,2] = incid.cell(c+1,2).value
         Inc[c,3] = incid.cell(c+1,3).value
+        Inc[c,4] = incid.cell(c+1,4).value
     
     ################################################## Ler as cargas
     carg = arquivo.sheet_by_name('Carregamento')
@@ -119,29 +120,49 @@ def importa(entradaNome):
         GDL = no*2-(2-xouy) 
         R[c,0] = GDL-1
 
+    # Vetor com as condições de colapso
+    C = np.zeros((4,1))
+    
+    C[0][0] = restr.cell(1,2).value
+    C[1][0] = restr.cell(1,4).value
+    C[2][0] = restr.cell(1,5).value
+    C[3][0] = restr.cell(1,6).value
 
-    return nn,N,nm,Inc,nc,F,nr,R
 
-def geraSaida(nome,Ft,Ut,Epsi,Fi,Ti):
-    nome = nome + '.txt'
-    f = open(nome,"w+")
+    return nn,N,nm,Inc,nc,F,nr,R,C
+
+def geraSaida(nome,TFt,Ut,CUt,Epsi,CEpsi,Fi,Ti,CTi,Pb,P,Tb):
+    Ft = TFt[0]
+    nome0 = nome + '.txt'
+    f = open(nome0,"w+")
     f.write('Reacoes de apoio [N]\n')
     f.write(str(Ft))
     f.write('\n\nDeslocamentos [m]\n')
     f.write(str(Ut))
+    f.write('\n\nColapso por deslocamento [m]\n')
+    f.write(str(CUt))
     f.write('\n\nDeformacoes []\n')
     f.write(str(Epsi))
+    f.write('\n\nColapso por deformação [m]\n')
+    f.write(str(CEpsi))
     f.write('\n\nForcas internas [N]\n')
     f.write(str(Fi))
     f.write('\n\nTensoes internas [Pa]\n')
     f.write(str(Ti))
+    f.write('\n\nColapso por ruptura [m]\n')
+    f.write(str(CTi))
+    f.write('\n\nPeso das barras [kg]\n')
+    f.write(str(Pb))
+    f.write('\n\nPeso total [kg]\n')
+    f.write(str(P))
+    f.write('\n\nTamanho das barras [m]\n')
+    f.write(str(Tb))
     f.close()
     
-def geraSaida_(nome,Ft,Ut,Epsi,Fi,Ti):
-    nome = nome + '_.txt'
-    f = open(nome,"w+")
+    Ft = TFt[1]
+    nome1 = nome + "_format" + '.txt'
+    f = open(nome1,"w+")
     f.write('Forças e Reações de apoio [N]\n')
-
     n = int(len(Ft) / 2)
     for i in range(n):
         x = "{:.2f}".format(Ft[0 + i*2][0])
@@ -149,25 +170,37 @@ def geraSaida_(nome,Ft,Ut,Epsi,Fi,Ti):
         f.write("Nó {:02d} x: {:>9} y: {:>9}\n".format(i+1, x, y))
 
     f.write('\nDeslocamentos [m]\n')
-
     n = int(len(Ut) / 2)
     for u in range(n):
         f.write("Nó {:02d} x: {:+.2e} y: {:+.2e}\n".format(u+1, Ut[0 + u*2][0], Ut[1 + u*2][0]))
 
     f.write('\nDeformacoes []\n')
-
     for u in range(len(Epsi)):
         f.write("Elemento {:02d}: {:+.2e}\n".format(u+1, Epsi[u][0]))
 
     f.write('\nForcas internas [kN]\n')
-
     for u in range(len(Fi)):
         e = "{:.2f}".format(Fi[u][0]/1000)
         f.write("Elemento {:02d}: {:>9}\n".format(u+1, e))
 
-    f.write('\nTensoes internas [KPa]\n')
-
+    f.write('\nTensoes internas [GPa]\n')
     for u in range(len(Ti)):
-        e = "{:.2f}".format(Ti[u][0]/1000)
+        e = "{:.2f}".format(Ti[u][0]/1000000)
         f.write("Elemento {:02d}: {:>9}\n".format(u+1, e))
+
+    f.write('\nPeso das barras [g]\n')
+    for u in range(len(Ti)):
+        e = "{:.2f}".format(Pb[u][0]*1000)
+        f.write("Elemento {:02d}: {:>9}\n".format(u+1, e))
+
+    f.write('\nPeso total [g]\n')
+    e = "{:.2f}".format(P[0][0]*1000)
+    f.write("Peso: {:>7}\n".format(e))
+
+    f.write('\nTamanho das barras [mm]\n')
+    for u in range(len(Tb)):
+        e = "{:.2f}".format(Tb[u][0]*1000)
+        f.write("Elemento {:02d}: {:>9}\n".format(u+1, e))
+
+    f.close()
 

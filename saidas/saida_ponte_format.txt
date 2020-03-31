@@ -1,0 +1,552 @@
+Forças e Reações de apoio [N]
+Nó 01 x:     67.33 y:     73.30
+Nó 02 x:     76.35 y:    182.18
+Nó 03 x:     -0.00 y:     -0.00
+Nó 04 x:      0.00 y:      0.00
+Nó 05 x:      0.00 y:     -0.00
+Nó 06 x:     -0.00 y:      0.00
+Nó 07 x:     -0.00 y:     -0.00
+Nó 08 x:      0.00 y:     -0.00
+Nó 09 x:     -0.00 y:      0.00
+Nó 10 x:      0.00 y:      0.00
+Nó 11 x:      0.00 y:     -0.00
+Nó 12 x:    -76.35 y:    182.18
+Nó 13 x:    -67.33 y:     73.30
+Nó 14 x:     -0.00 y:      0.00
+Nó 15 x:      0.00 y:     -0.00
+Nó 16 x:     -0.00 y:      0.00
+Nó 17 x:     -0.00 y:     -0.00
+Nó 18 x:     -0.00 y:     -0.00
+Nó 19 x:      0.00 y:      0.00
+Nó 20 x:      0.00 y:      0.00
+Nó 21 x:      0.00 y:     -0.00
+Nó 22 x:     -0.00 y:      0.00
+Nó 23 x:      0.00 y:      0.00
+Nó 24 x:      0.00 y:      0.00
+Nó 25 x:      0.00 y:     -0.00
+Nó 26 x:     -0.00 y:      0.00
+Nó 27 x:      0.00 y:      0.00
+Nó 28 x:     -0.00 y:      0.00
+Nó 29 x:     -0.00 y:     -0.00
+Nó 30 x:     -0.00 y:      0.00
+Nó 31 x:      0.00 y:      0.00
+Nó 32 x:      0.00 y:      0.00
+Nó 33 x:      0.00 y:      0.00
+Nó 34 x:      0.00 y:      0.00
+Nó 35 x:      0.00 y:      0.00
+Nó 36 x:      0.00 y:      0.00
+Nó 37 x:    175.62 y:    219.52
+Nó 38 x:   -175.62 y:    219.52
+Nó 39 x:      0.00 y:      0.00
+Nó 40 x:      0.00 y:   -475.00
+Nó 41 x:      0.00 y:      0.00
+Nó 42 x:     -0.00 y:   -475.00
+Nó 43 x:      0.00 y:      0.00
+
+Deslocamentos [m]
+Nó 01 x: +0.00e+00 y: +0.00e+00
+Nó 02 x: +0.00e+00 y: +0.00e+00
+Nó 03 x: -9.81e-06 y: -6.62e-05
+Nó 04 x: -3.30e-05 y: -1.96e-04
+Nó 05 x: -3.64e-05 y: -2.92e-04
+Nó 06 x: -2.43e-05 y: -3.57e-04
+Nó 07 x: -1.76e-20 y: -3.77e-04
+Nó 08 x: +2.43e-05 y: -3.57e-04
+Nó 09 x: +3.64e-05 y: -2.92e-04
+Nó 10 x: +3.30e-05 y: -1.96e-04
+Nó 11 x: +9.81e-06 y: -6.62e-05
+Nó 12 x: +0.00e+00 y: +0.00e+00
+Nó 13 x: +0.00e+00 y: +0.00e+00
+Nó 14 x: +2.33e-05 y: -1.92e-06
+Nó 15 x: +2.23e-05 y: -2.93e-05
+Nó 16 x: +2.16e-05 y: -1.04e-04
+Nó 17 x: +2.23e-05 y: -2.10e-04
+Nó 18 x: +1.18e-05 y: -3.02e-04
+Nó 19 x: +1.01e-05 y: -3.84e-04
+Nó 20 x: +2.50e-19 y: -4.00e-04
+Nó 21 x: -1.01e-05 y: -3.84e-04
+Nó 22 x: -1.18e-05 y: -3.02e-04
+Nó 23 x: -2.23e-05 y: -2.10e-04
+Nó 24 x: -2.16e-05 y: -1.04e-04
+Nó 25 x: -2.23e-05 y: -2.93e-05
+Nó 26 x: -2.33e-05 y: -1.92e-06
+Nó 27 x: -1.33e-06 y: -2.93e-05
+Nó 28 x: -1.38e-05 y: -1.16e-04
+Nó 29 x: -1.86e-05 y: -2.27e-04
+Nó 30 x: -2.38e-05 y: -3.16e-04
+Nó 31 x: -1.45e-05 y: -3.76e-04
+Nó 32 x: +1.45e-05 y: -3.76e-04
+Nó 33 x: +2.38e-05 y: -3.16e-04
+Nó 34 x: +1.86e-05 y: -2.27e-04
+Nó 35 x: +1.38e-05 y: -1.16e-04
+Nó 36 x: +1.33e-06 y: -2.93e-05
+Nó 37 x: +0.00e+00 y: +0.00e+00
+Nó 38 x: +0.00e+00 y: +0.00e+00
+Nó 39 x: +6.74e-05 y: -2.74e-04
+Nó 40 x: +4.02e-05 y: -4.05e-04
+Nó 41 x: +3.47e-19 y: -3.88e-04
+Nó 42 x: -4.02e-05 y: -4.05e-04
+Nó 43 x: -6.74e-05 y: -2.74e-04
+
+Deformacoes []
+Elemento 01: -2.45e-04
+Elemento 02: -5.80e-04
+Elemento 03: -8.51e-05
+Elemento 04: +3.02e-04
+Elemento 05: +6.09e-04
+Elemento 06: +6.09e-04
+Elemento 07: +3.02e-04
+Elemento 08: -8.51e-05
+Elemento 09: -5.80e-04
+Elemento 10: -2.45e-04
+Elemento 11: -3.06e-04
+Elemento 12: -5.85e-04
+Elemento 13: +3.68e-04
+Elemento 14: -9.93e-04
+Elemento 15: +7.92e-04
+Elemento 16: -6.18e-04
+Elemento 17: +6.19e-04
+Elemento 18: -4.83e-04
+Elemento 19: +4.91e-04
+Elemento 20: -3.84e-04
+Elemento 21: +1.49e-04
+Elemento 22: -2.32e-04
+Elemento 23: +1.49e-04
+Elemento 24: -3.84e-04
+Elemento 25: +4.91e-04
+Elemento 26: -4.83e-04
+Elemento 27: +6.19e-04
+Elemento 28: -6.18e-04
+Elemento 29: +7.92e-04
+Elemento 30: -9.93e-04
+Elemento 31: +3.68e-04
+Elemento 32: -5.85e-04
+Elemento 33: -3.06e-04
+Elemento 34: -1.92e-05
+Elemento 35: +2.71e-05
+Elemento 36: +0.00e+00
+Elemento 37: -6.83e-04
+Elemento 38: +2.44e-04
+Elemento 39: -7.92e-04
+Elemento 40: +3.48e-04
+Elemento 41: -6.19e-04
+Elemento 42: +2.84e-04
+Elemento 43: -4.91e-04
+Elemento 44: -1.52e-04
+Elemento 45: -1.49e-04
+Elemento 46: -1.49e-04
+Elemento 47: -1.52e-04
+Elemento 48: -4.91e-04
+Elemento 49: +2.84e-04
+Elemento 50: -6.19e-04
+Elemento 51: +3.48e-04
+Elemento 52: -7.92e-04
+Elemento 53: +2.44e-04
+Elemento 54: -6.83e-04
+Elemento 55: -6.78e-20
+Elemento 56: +2.71e-05
+Elemento 57: -1.92e-05
+Elemento 58: -1.92e-05
+Elemento 59: -1.92e-05
+Elemento 60: +1.69e-05
+Elemento 61: -2.62e-04
+Elemento 62: -4.13e-05
+Elemento 63: -2.53e-04
+Elemento 64: -2.53e-04
+Elemento 65: -4.13e-05
+Elemento 66: -2.62e-04
+Elemento 67: +1.69e-05
+Elemento 68: -1.92e-05
+Elemento 69: -1.92e-05
+Elemento 70: -5.46e-04
+Elemento 71: -3.46e-04
+Elemento 72: +5.59e-04
+Elemento 73: -9.72e-04
+Elemento 74: -4.17e-04
+Elemento 75: -1.52e-04
+Elemento 76: +2.37e-04
+Elemento 77: -1.52e-04
+Elemento 78: -4.17e-04
+Elemento 79: -9.72e-04
+Elemento 80: +5.59e-04
+Elemento 81: -3.46e-04
+Elemento 82: -5.46e-04
+Elemento 83: -6.79e-04
+Elemento 84: -1.01e-03
+Elemento 85: -1.01e-03
+Elemento 86: -6.79e-04
+Elemento 87: -9.03e-04
+Elemento 88: -9.03e-04
+Elemento 89: -4.49e-04
+Elemento 90: -4.49e-04
+
+Forcas internas [kN]
+Elemento 01:     -0.08
+Elemento 02:     -0.18
+Elemento 03:     -0.03
+Elemento 04:      0.09
+Elemento 05:      0.19
+Elemento 06:      0.19
+Elemento 07:      0.09
+Elemento 08:     -0.03
+Elemento 09:     -0.18
+Elemento 10:     -0.08
+Elemento 11:     -0.10
+Elemento 12:     -0.18
+Elemento 13:      0.11
+Elemento 14:     -0.31
+Elemento 15:      0.25
+Elemento 16:     -0.19
+Elemento 17:      0.19
+Elemento 18:     -0.15
+Elemento 19:      0.15
+Elemento 20:     -0.12
+Elemento 21:      0.05
+Elemento 22:     -0.07
+Elemento 23:      0.05
+Elemento 24:     -0.12
+Elemento 25:      0.15
+Elemento 26:     -0.15
+Elemento 27:      0.19
+Elemento 28:     -0.19
+Elemento 29:      0.25
+Elemento 30:     -0.31
+Elemento 31:      0.11
+Elemento 32:     -0.18
+Elemento 33:     -0.10
+Elemento 34:     -0.01
+Elemento 35:      0.01
+Elemento 36:      0.00
+Elemento 37:     -0.21
+Elemento 38:      0.08
+Elemento 39:     -0.25
+Elemento 40:      0.11
+Elemento 41:     -0.19
+Elemento 42:      0.09
+Elemento 43:     -0.15
+Elemento 44:     -0.05
+Elemento 45:     -0.05
+Elemento 46:     -0.05
+Elemento 47:     -0.05
+Elemento 48:     -0.15
+Elemento 49:      0.09
+Elemento 50:     -0.19
+Elemento 51:      0.11
+Elemento 52:     -0.25
+Elemento 53:      0.08
+Elemento 54:     -0.21
+Elemento 55:     -0.00
+Elemento 56:      0.01
+Elemento 57:     -0.01
+Elemento 58:     -0.01
+Elemento 59:     -0.01
+Elemento 60:      0.01
+Elemento 61:     -0.08
+Elemento 62:     -0.01
+Elemento 63:     -0.08
+Elemento 64:     -0.08
+Elemento 65:     -0.01
+Elemento 66:     -0.08
+Elemento 67:      0.01
+Elemento 68:     -0.01
+Elemento 69:     -0.01
+Elemento 70:     -0.17
+Elemento 71:     -0.11
+Elemento 72:      0.17
+Elemento 73:     -0.30
+Elemento 74:     -0.13
+Elemento 75:     -0.05
+Elemento 76:      0.07
+Elemento 77:     -0.05
+Elemento 78:     -0.13
+Elemento 79:     -0.30
+Elemento 80:      0.17
+Elemento 81:     -0.11
+Elemento 82:     -0.17
+Elemento 83:     -0.21
+Elemento 84:     -0.31
+Elemento 85:     -0.31
+Elemento 86:     -0.21
+Elemento 87:     -0.28
+Elemento 88:     -0.28
+Elemento 89:     -0.14
+Elemento 90:     -0.14
+
+Tensoes internas [GPa]
+Elemento 01:     -0.98
+Elemento 02:     -2.32
+Elemento 03:     -0.34
+Elemento 04:      1.21
+Elemento 05:      2.43
+Elemento 06:      2.43
+Elemento 07:      1.21
+Elemento 08:     -0.34
+Elemento 09:     -2.32
+Elemento 10:     -0.98
+Elemento 11:     -1.22
+Elemento 12:     -2.34
+Elemento 13:      1.47
+Elemento 14:     -3.97
+Elemento 15:      3.17
+Elemento 16:     -2.47
+Elemento 17:      2.48
+Elemento 18:     -1.93
+Elemento 19:      1.97
+Elemento 20:     -1.53
+Elemento 21:      0.59
+Elemento 22:     -0.93
+Elemento 23:      0.59
+Elemento 24:     -1.53
+Elemento 25:      1.97
+Elemento 26:     -1.93
+Elemento 27:      2.48
+Elemento 28:     -2.47
+Elemento 29:      3.17
+Elemento 30:     -3.97
+Elemento 31:      1.47
+Elemento 32:     -2.34
+Elemento 33:     -1.22
+Elemento 34:     -0.08
+Elemento 35:      0.11
+Elemento 36:      0.00
+Elemento 37:     -2.73
+Elemento 38:      0.98
+Elemento 39:     -3.17
+Elemento 40:      1.39
+Elemento 41:     -2.48
+Elemento 42:      1.14
+Elemento 43:     -1.97
+Elemento 44:     -0.61
+Elemento 45:     -0.59
+Elemento 46:     -0.59
+Elemento 47:     -0.61
+Elemento 48:     -1.97
+Elemento 49:      1.14
+Elemento 50:     -2.48
+Elemento 51:      1.39
+Elemento 52:     -3.17
+Elemento 53:      0.98
+Elemento 54:     -2.73
+Elemento 55:     -0.00
+Elemento 56:      0.11
+Elemento 57:     -0.08
+Elemento 58:     -0.08
+Elemento 59:     -0.08
+Elemento 60:      0.07
+Elemento 61:     -1.05
+Elemento 62:     -0.17
+Elemento 63:     -1.01
+Elemento 64:     -1.01
+Elemento 65:     -0.17
+Elemento 66:     -1.05
+Elemento 67:      0.07
+Elemento 68:     -0.08
+Elemento 69:     -0.08
+Elemento 70:     -2.18
+Elemento 71:     -1.38
+Elemento 72:      2.24
+Elemento 73:     -3.89
+Elemento 74:     -1.67
+Elemento 75:     -0.61
+Elemento 76:      0.95
+Elemento 77:     -0.61
+Elemento 78:     -1.67
+Elemento 79:     -3.89
+Elemento 80:      2.24
+Elemento 81:     -1.38
+Elemento 82:     -2.18
+Elemento 83:     -2.72
+Elemento 84:     -4.02
+Elemento 85:     -4.02
+Elemento 86:     -2.72
+Elemento 87:     -3.61
+Elemento 88:     -3.61
+Elemento 89:     -1.80
+Elemento 90:     -1.80
+
+Peso das barras [g]
+Elemento 01:      2.64
+Elemento 02:      2.64
+Elemento 03:      2.64
+Elemento 04:      2.64
+Elemento 05:      2.64
+Elemento 06:      2.64
+Elemento 07:      2.64
+Elemento 08:      2.64
+Elemento 09:      2.64
+Elemento 10:      2.64
+Elemento 11:      4.67
+Elemento 12:      3.30
+Elemento 13:      4.22
+Elemento 14:      3.30
+Elemento 15:      4.22
+Elemento 16:      3.30
+Elemento 17:      4.22
+Elemento 18:      3.30
+Elemento 19:      4.22
+Elemento 20:      3.30
+Elemento 21:      4.22
+Elemento 22:      6.60
+Elemento 23:      4.22
+Elemento 24:      3.30
+Elemento 25:      4.22
+Elemento 26:      3.30
+Elemento 27:      4.22
+Elemento 28:      3.30
+Elemento 29:      4.22
+Elemento 30:      3.30
+Elemento 31:      4.22
+Elemento 32:      3.30
+Elemento 33:      4.67
+Elemento 34:      6.60
+Elemento 35:      4.67
+Elemento 36:      3.30
+Elemento 37:      4.22
+Elemento 38:      3.30
+Elemento 39:      4.22
+Elemento 40:      3.30
+Elemento 41:      4.22
+Elemento 42:      3.30
+Elemento 43:      4.22
+Elemento 44:      3.30
+Elemento 45:      4.22
+Elemento 46:      4.22
+Elemento 47:      3.30
+Elemento 48:      4.22
+Elemento 49:      3.30
+Elemento 50:      4.22
+Elemento 51:      3.30
+Elemento 52:      4.22
+Elemento 53:      3.30
+Elemento 54:      4.22
+Elemento 55:      3.30
+Elemento 56:      4.67
+Elemento 57:      6.60
+Elemento 58:      3.30
+Elemento 59:      2.64
+Elemento 60:      2.64
+Elemento 61:      2.64
+Elemento 62:      2.64
+Elemento 63:      2.64
+Elemento 64:      2.64
+Elemento 65:      2.64
+Elemento 66:      2.64
+Elemento 67:      2.64
+Elemento 68:      2.64
+Elemento 69:      3.30
+Elemento 70:      6.22
+Elemento 71:      4.22
+Elemento 72:      3.30
+Elemento 73:      4.22
+Elemento 74:      3.30
+Elemento 75:      4.22
+Elemento 76:      3.30
+Elemento 77:      4.22
+Elemento 78:      3.30
+Elemento 79:      4.22
+Elemento 80:      3.30
+Elemento 81:      4.22
+Elemento 82:      6.22
+Elemento 83:      2.64
+Elemento 84:      2.64
+Elemento 85:      2.64
+Elemento 86:      2.64
+Elemento 87:      4.22
+Elemento 88:      4.22
+Elemento 89:      4.22
+Elemento 90:      4.22
+
+Peso total [g]
+Peso:  330.04
+
+Tamanho das barras [mm]
+Elemento 01:     40.00
+Elemento 02:     40.00
+Elemento 03:     40.00
+Elemento 04:     40.00
+Elemento 05:     40.00
+Elemento 06:     40.00
+Elemento 07:     40.00
+Elemento 08:     40.00
+Elemento 09:     40.00
+Elemento 10:     40.00
+Elemento 11:     70.71
+Elemento 12:     50.00
+Elemento 13:     64.03
+Elemento 14:     50.00
+Elemento 15:     64.03
+Elemento 16:     50.00
+Elemento 17:     64.03
+Elemento 18:     50.00
+Elemento 19:     64.03
+Elemento 20:     50.00
+Elemento 21:     64.03
+Elemento 22:    100.00
+Elemento 23:     64.03
+Elemento 24:     50.00
+Elemento 25:     64.03
+Elemento 26:     50.00
+Elemento 27:     64.03
+Elemento 28:     50.00
+Elemento 29:     64.03
+Elemento 30:     50.00
+Elemento 31:     64.03
+Elemento 32:     50.00
+Elemento 33:     70.71
+Elemento 34:    100.00
+Elemento 35:     70.71
+Elemento 36:     50.00
+Elemento 37:     64.03
+Elemento 38:     50.00
+Elemento 39:     64.03
+Elemento 40:     50.00
+Elemento 41:     64.03
+Elemento 42:     50.00
+Elemento 43:     64.03
+Elemento 44:     50.00
+Elemento 45:     64.03
+Elemento 46:     64.03
+Elemento 47:     50.00
+Elemento 48:     64.03
+Elemento 49:     50.00
+Elemento 50:     64.03
+Elemento 51:     50.00
+Elemento 52:     64.03
+Elemento 53:     50.00
+Elemento 54:     64.03
+Elemento 55:     50.00
+Elemento 56:     70.71
+Elemento 57:    100.00
+Elemento 58:     50.00
+Elemento 59:     40.00
+Elemento 60:     40.00
+Elemento 61:     40.00
+Elemento 62:     40.00
+Elemento 63:     40.00
+Elemento 64:     40.00
+Elemento 65:     40.00
+Elemento 66:     40.00
+Elemento 67:     40.00
+Elemento 68:     40.00
+Elemento 69:     50.00
+Elemento 70:     94.34
+Elemento 71:     64.03
+Elemento 72:     50.00
+Elemento 73:     64.03
+Elemento 74:     50.00
+Elemento 75:     64.03
+Elemento 76:     50.00
+Elemento 77:     64.03
+Elemento 78:     50.00
+Elemento 79:     64.03
+Elemento 80:     50.00
+Elemento 81:     64.03
+Elemento 82:     94.34
+Elemento 83:     40.00
+Elemento 84:     40.00
+Elemento 85:     40.00
+Elemento 86:     40.00
+Elemento 87:     64.03
+Elemento 88:     64.03
+Elemento 89:     64.03
+Elemento 90:     64.03

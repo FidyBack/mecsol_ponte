@@ -55,6 +55,8 @@ def plota(N,Inc):
     plt.show()
     
 def importa(entradaNome):
+
+    entradaNome = "entradas/" + entradaNome + ".xlsx"
     
     import numpy as np
     import xlrd
@@ -132,8 +134,11 @@ def importa(entradaNome):
     return nn,N,nm,Inc,nc,F,nr,R,C
 
 def geraSaida(nome,TFt,Ut,CUt,Epsi,CEpsi,Fi,Ti,CTi,Pb,P,Tb):
+    from xlutils.copy import copy # http://pypi.python.org/pypi/xlutils
+    from xlrd import open_workbook # http://pypi.python.org/pypi/xlrd
+
     Ft = TFt[0]
-    nome0 = nome + '.txt'
+    nome0 = "saidas/" + nome + '.txt'
     f = open(nome0,"w+")
     f.write('Reacoes de apoio [N]\n')
     f.write(str(Ft))
@@ -160,7 +165,7 @@ def geraSaida(nome,TFt,Ut,CUt,Epsi,CEpsi,Fi,Ti,CTi,Pb,P,Tb):
     f.close()
     
     Ft = TFt[1]
-    nome1 = nome + "_format" + '.txt'
+    nome1 = "saidas/" + nome + "_format" + '.txt'
     f = open(nome1,"w+")
     f.write('Forças e Reações de apoio [N]\n')
     n = int(len(Ft) / 2)
@@ -203,4 +208,26 @@ def geraSaida(nome,TFt,Ut,CUt,Epsi,CEpsi,Fi,Ti,CTi,Pb,P,Tb):
         f.write("Elemento {:02d}: {:>9}\n".format(u+1, e))
 
     f.close()
+
+    entradaNome = "entradas/" + nome + ".xlsx"
+    original = open_workbook(entradaNome)
+    copia = copy(original) 
+    incid_sheet = copia.get_sheet('Incidencia') 
+
+    minimo = abs(min(Ti))
+    maximo = max(Ti)
+    if(minimo > maximo):
+        maximo = minimo
+
+    for i in range(len(Ti)):
+        if Ti[i][0] > 0:
+            incid_sheet.write(i+1, 7, float(Ti[i][0]/maximo))
+        else:
+            incid_sheet.write(i+1, 7, float(Ti[i][0]/-maximo))
+
+    incid_sheet.write(1, 8, float(P[0][0]))
+
+    
+
+    copia.save("entradas/" + nome + ".xlsx")
 

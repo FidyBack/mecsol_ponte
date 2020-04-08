@@ -165,47 +165,28 @@ def geraSaida(nome,TFt,Ut,CUt,Epsi,CEpsi,Fi,Ti,CTi,Pb,P,Tb):
     f.close()
     
     Ft = TFt[1]
+    dist = 10*" "
     nome1 = "saidas/" + nome + "_format" + '.txt'
     f = open(nome1,"w+")
-    f.write('Forças e Reações de apoio [N]\n')
+    f.write('Reacoes de apoio [N] e nDeslocamentos [m]\n')
     n = int(len(Ft) / 2)
     for i in range(n):
         x = "{:.2f}".format(Ft[0 + i*2][0])
         y = "{:.2f}".format(Ft[1 + i*2][0])
-        f.write("Nó {:02d} x: {:>9} y: {:>9}\n".format(i+1, x, y))
+        f.write("Nó {:02d} x: {:>9} [N] y: {:>9} [N]{}x: {:+.2e} [m] y: {:+.2e} [m]\n".format(i+1, x, y, dist, Ut[0 + i*2][0], Ut[1 + i*2][0]))
 
-    f.write('\nDeslocamentos [m]\n')
-    n = int(len(Ut) / 2)
-    for u in range(n):
-        f.write("Nó {:02d} x: {:+.2e} y: {:+.2e}\n".format(u+1, Ut[0 + u*2][0], Ut[1 + u*2][0]))
-
-    f.write('\nDeformacoes []\n')
+    dist = 3*" "
+    f.write('\nDeformacoes [], Forcas internas [kN], Tensoes internas [GPa], Peso das barras [g] e Tamanho das barras [mm]\n')
     for u in range(len(Epsi)):
-        f.write("Elemento {:02d}: {:+.2e}\n".format(u+1, Epsi[u][0]))
-
-    f.write('\nForcas internas [kN]\n')
-    for u in range(len(Fi)):
-        e = "{:.2f}".format(Fi[u][0]/1000)
-        f.write("Elemento {:02d}: {:>9}\n".format(u+1, e))
-
-    f.write('\nTensoes internas [GPa]\n')
-    for u in range(len(Ti)):
-        e = "{:.2f}".format(Ti[u][0]/1000000)
-        f.write("Elemento {:02d}: {:>9}\n".format(u+1, e))
-
-    f.write('\nPeso das barras [g]\n')
-    for u in range(len(Ti)):
-        e = "{:.2f}".format(Pb[u][0]*1000)
-        f.write("Elemento {:02d}: {:>9}\n".format(u+1, e))
+        a = "{:.2f}".format(Fi[u][0]/1000)
+        b = "{:.2f}".format(Ti[u][0]/1000000)
+        c = "{:.2f}".format(Pb[u][0]*1000)
+        d = "{:.2f}".format(Tb[u][0]*1000)
+        f.write("Elemento {:02d}: {:+.2e} []{}{:>9} [kN]{}{:>9} [GPa]{}{:>9} [g]{}{:>9} [mm]\n".format(u+1, Epsi[u][0], dist, a, dist, b, dist, c, dist, d))
 
     f.write('\nPeso total [g]\n')
     e = "{:.2f}".format(P[0][0]*1000)
     f.write("Peso: {:>7}\n".format(e))
-
-    f.write('\nTamanho das barras [mm]\n')
-    for u in range(len(Tb)):
-        e = "{:.2f}".format(Tb[u][0]*1000)
-        f.write("Elemento {:02d}: {:>9}\n".format(u+1, e))
 
     f.close()
 

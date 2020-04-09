@@ -12,8 +12,8 @@ class Node:
         self.y = y
         self.liberty_degree = [(number*2), 1 + number*2]
 
-# Barra
-class Bar:
+# memberra
+class Member:
     def __init__(self, node1, node2, modulus_of_elasticity, cross_section_area, density):
         self.liberty_degree = list(itertools.chain(*[node1.liberty_degree, node2.liberty_degree]))
 
@@ -24,7 +24,10 @@ class Bar:
                         [c*s, s**2, -c*s, -s**2],
                         [-c**2, -c*s, c**2, c*s],
                         [-c*s, -s**2, c*s, s**2]])
-
+        self.node_1 = node1
+        self.node_2 = node2
+        self.sin = s
+        self.cos = c
         self.rigidity_matrix = ((modulus_of_elasticity * cross_section_area) / lenght)*MR
         self.lenght = lenght
         self.array = np.array([-c, -s, c, s])
@@ -36,7 +39,7 @@ class Bar:
     def calculate(self, displacements_vector):
         displacements_vector = [displacements_vector[i] for i in self.liberty_degree]
         # return deformation, tension, interna forces
-        deformation = (1/self.lenght) * self.array.dot(displacements_vector)
+        deformation = (1/self.lenght) * np.array([-self.cos, -self.sin, self.cos, self.sin]).dot(displacements_vector)
         tension = self.modulus_of_elasticity * deformation
         internal_forces = tension * self.cross_section_area
         return deformation, tension, internal_forces
@@ -57,25 +60,27 @@ class Structure:
         self.loads_vector = data[5]
         self.restrictions_number = data[6]
         self.restrictions_vector = [int(x) for x in data[7]]
-        self. colapse_conditions = data[8]
+        self.colapse_conditions = data[8]
         self.solved = False
 
-        nodes = []
+        self.nodes = []
         for node in range(self.nodes_number):
-            nodes.append(Node(node, self.nodes_matrix[0][node], self.nodes_matrix[1][node]))
+            self.nodes.append(Node(node, self.nodes_matrix[0][node], self.nodes_matrix[1][node]))
         
-        self.bars = []
+        self.members = []
         
         
-        self.bar_lenghts = np.zeros((self.members_number, 1))
-        self.bar_weights = np.zeros((self.members_number, 1))
+        self.member_lenghts = np.zeros((self.members_number, 1))
+        self.member_weights = np.zeros((self.members_number, 1))
         self.weight = np.zeros((1, 1))
-        for member in range(self.members_number):
-            bar = Bar(nodes[(int(self.incidence_matrix[member][0]))-1], nodes[(int(self.incidence_matrix[member][1]))-1], self.incidence_matrix[member][2], self.incidence_matrix[member][3], self.incidence_matrix[member][4])
-            self.bar_lenghts[member][0] = bar.lenght
-            self.bar_weights[member][0] = bar.weight
-            self. weight[0,0] += bar.weight
-            self.bars.append(bar)
+        for i in range(self.members_number):
+            member = Member(self.nodes[(int(self.incidence_matrix[i][0]))-1], self.nodes[(int(self.incidence_matrix[i][1]))-1], self.incidence_matrix[i][2], self.incidence_matrix[i][3], self.incidence_matrix[i][4])
+            self.member_lenghts[i][0] = member.lenght
+            self.member_weights[i][0] = member.weight
+            self. weight[0,0] += member.weight
+            self.members.append(member)
+
+        self.members_number = len(self.members)
 
     def plot(self):
         plota(self.nodes_matrix, self.incidence_matrix)
@@ -83,10 +88,10 @@ class Structure:
     def solve(self):
 
         global_rigidity_matrix = np.zeros((self.nodes_number * 2, self.nodes_number * 2))
-        for bar in self.bars:
+        for member in self.members:
             for line in range(4):
                 for column in range(4):
-                    global_rigidity_matrix[bar.liberty_degree[line]][bar.liberty_degree[column]] += bar.rigidity_matrix[line][column]
+                    global_rigidity_matrix[member.liberty_degree[line]][member.liberty_degree[column]] += member.rigidity_matrix[line][column]
 
         #Countour Conditions
         contour_loads_vector = np.delete(self.loads_vector, self.restrictions_vector, 0)
@@ -112,13 +117,13 @@ class Structure:
         target_loads_vector = np.delete(resultant_loads_vector, index, 0)
         
 
-        tensions_vector = np.zeros((len(self.bars), 1))
-        deformations_vector = np.zeros((len(self.bars), 1))
-        internal_forces_vector = np.zeros((len(self.bars), 1))
+        tensions_vector = np.zeros((self.members_number, 1))
+        deformations_vector = np.zeros((self.members_number, 1))
+        internal_forces_vector = np.zeros((self.members_number, 1))
 
         #Tension and Deformation 
-        for i in range(len(self.bars)):
-            deformation, tension, internal_forces = self.bars[i].calculate(displacements_vector)
+        for i in range(self.members_number):
+            deformation, tension, internal_forces = self.members[i].calculate(displacements_vector)
             tensions_vector[i] = tension
             deformations_vector[i] = deformation
             internal_forces_vector[i] = internal_forces
@@ -136,7 +141,7 @@ class Structure:
         tensions_vector = abs(tensions_vector)
         self.rupture_colapse = np.greater_equal(tensions_vector, self.colapse_conditions[1])
 
-        percentage_deformation = abs(deformations_vector) / self.bar_lenghts
+        percentage_deformation = abs(deformations_vector) / self.member_lenghts
         self.deformation_colapse = np.greater_equal(percentage_deformation, self.colapse_conditions[3])
 
         self.solved = True
@@ -144,7 +149,7 @@ class Structure:
     def write(self, fille_name):
 
         if self.solved:
-            geraSaida(fille_name, [self.target_loads_vector, self.resultant_loads_vector], self.displacements_vector, self.displacements_colapse, self.deformations_vector, self.deformation_colapse, self.internal_forces_vector, self.tensions_vector, self.rupture_colapse, self.bar_weights, self. weight, self.bar_lenghts)
+            geraSaida(fille_name, [self.target_loads_vector, self.resultant_loads_vector], self.displacements_vector, self.displacements_colapse, self.deformations_vector, self.deformation_colapse, self.internal_forces_vector, self.tensions_vector, self.rupture_colapse, self.member_weights, self. weight, self.member_lenghts)
         else:
             print("Solve first")
 

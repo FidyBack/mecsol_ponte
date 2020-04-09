@@ -166,6 +166,7 @@ def geraSaida(nome,TFt,Ut,CUt,Epsi,CEpsi,Fi,Ti,CTi,Pb,P,Tb):
     
     Ft = TFt[1]
     dist = 10*" "
+    dist1 = 5*" "
     nome1 = "saidas/" + nome + "_format" + '.txt'
     f = open(nome1,"w+")
     f.write('Reacoes de apoio [N] e nDeslocamentos [m]\n')
@@ -173,7 +174,7 @@ def geraSaida(nome,TFt,Ut,CUt,Epsi,CEpsi,Fi,Ti,CTi,Pb,P,Tb):
     for i in range(n):
         x = "{:.2f}".format(Ft[0 + i*2][0])
         y = "{:.2f}".format(Ft[1 + i*2][0])
-        f.write("Nó {:02d} x: {:>9} [N] y: {:>9} [N]{}x: {:+.2e} [m] y: {:+.2e} [m]\n".format(i+1, x, y, dist, Ut[0 + i*2][0], Ut[1 + i*2][0]))
+        f.write("Nó {:02d}{}x: {:>9} [N] y: {:>9} [N]{}x: {:+.2e} [m] y: {:+.2e} [m]\n".format(i+1, dist1, x, y, dist, Ut[0 + i*2][0], Ut[1 + i*2][0]))
 
     dist = 3*" "
     f.write('\nDeformacoes [], Forcas internas [kN], Tensoes internas [GPa], Peso das barras [g] e Tamanho das barras [mm]\n')
@@ -182,7 +183,7 @@ def geraSaida(nome,TFt,Ut,CUt,Epsi,CEpsi,Fi,Ti,CTi,Pb,P,Tb):
         b = "{:.2f}".format(Ti[u][0]/1000000)
         c = "{:.2f}".format(Pb[u][0]*1000)
         d = "{:.2f}".format(Tb[u][0]*1000)
-        f.write("Elemento {:02d}: {:+.2e} []{}{:>9} [kN]{}{:>9} [GPa]{}{:>9} [g]{}{:>9} [mm]\n".format(u+1, Epsi[u][0], dist, a, dist, b, dist, c, dist, d))
+        f.write("Elemento {:02d}:{}{:+.2e} []{}{:>9} [kN]{}{:>9} [GPa]{}{:>9} [g]{}{:>9} [mm]\n".format(u+1, dist, Epsi[u][0], dist, a, dist, b, dist, c, dist, d))
 
     f.write('\nPeso total [g]\n')
     e = "{:.2f}".format(P[0][0]*1000)

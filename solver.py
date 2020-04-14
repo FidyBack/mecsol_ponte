@@ -13,7 +13,7 @@ class Node:
         self.liberty_degree = [(number*2)-1, number*2]
 
 # Barra
-class Bar:
+class Member:
     def __init__(self, node1, node2, modulus_of_elasticity, cross_section_area):
         self.liberty_degree = list(itertools.chain(*[node1.liberty_degree, node2.liberty_degree]))
 
@@ -58,33 +58,33 @@ class Solver:
         self.restrictions_vector = [int(x) for x in data[7]]
         self.solved = False
 
+        self.nodes = []
+        for node in range(self.nodes_number):
+            self.nodes.append(Node(node+1, self.nodes_matrix[0][node], self.nodes_matrix[1][node]))
+        
+        self.members = []
+        for member in range(self.members_number):
+            member = Member(self.nodes[(int(self.incidence_matrix[member][0]))-1], self.nodes[(int(self.incidence_matrix[member][1]))-1], self.incidence_matrix[member][2], self.incidence_matrix[member][3])
+            self.members.append(member)
+
     def plot(self):
         plota(self.nodes_matrix, self.incidence_matrix)
 
     def solve(self):
 
-        nodes = []
-        for node in range(self.nodes_number):
-            nodes.append(Node(node+1, self.nodes_matrix[0][node], self.nodes_matrix[1][node]))
-        
-        bars = []
         global_rigidity_matrix = np.zeros((self.nodes_number * 2, self.nodes_number * 2))
-        
-        
-        for member in range(self.members_number):
-            bar = Bar(nodes[(int(self.incidence_matrix[member][0]))-1], nodes[(int(self.incidence_matrix[member][1]))-1], self.incidence_matrix[member][2], self.incidence_matrix[member][3])
-            bars.append(bar)
+        for member in self.members:
             for line in range(4):
                 for column in range(4):
-                    global_rigidity_matrix[bar.liberty_degree[line]-1][bar.liberty_degree[column]-1] += bar.rigidity_matrix[line][column]
+                    global_rigidity_matrix[member.liberty_degree[line]-1][member.liberty_degree[column]-1] += member.rigidity_matrix[line][column]
 
         #Countour Conditions
         contour_loads_vector = np.delete(self.loads_vector, self.restrictions_vector, 0)
         contour_global_rigidity_matrix = np.delete(global_rigidity_matrix, self.restrictions_vector, 0)
         contour_global_rigidity_matrix = np.delete(contour_global_rigidity_matrix, self.restrictions_vector, 1)
         
-        #Solve for U
-        contour_displacements_vector = solve(contour_global_rigidity_matrix, contour_loads_vector)
+        #Solve for U. Numeric solve method developed, and on solve.py file. Numpy's is faster
+        contour_displacements_vector = np.linalg.solve(contour_global_rigidity_matrix, contour_loads_vector)
 
         #Global U
         displacements_vector = np.zeros((self.nodes_number * 2, 1))
@@ -94,21 +94,21 @@ class Solver:
             displacements_vector[index[i]] = contour_displacements_vector[i]
 
 
-        for i in range(self.nodes_number): # Deslocamentos multiplicados por 10,000 para visualização
-            self.nodes_matrix[0][i] += displacements_vector[i*2] * 10000
-            self.nodes_matrix[1][i] += displacements_vector[1 + i*2] * 10000
+        for i in range(self.nodes_number): # Deslocamentos multiplicados por 100 para visualização
+            self.nodes_matrix[0][i] += displacements_vector[i*2]
+            self.nodes_matrix[1][i] += displacements_vector[1 + i*2]
         #Loads vector = Kg * Ug
         resultant_loads_vector = global_rigidity_matrix.dot(displacements_vector)
         target_loads_vector = np.delete(resultant_loads_vector, index, 0)
         
 
-        tensions_vector = np.zeros((len(bars), 1))
-        deformations_vector = np.zeros((len(bars), 1))
-        internal_forces_vector = np.zeros((len(bars), 1))
+        tensions_vector = np.zeros((self.members_number, 1))
+        deformations_vector = np.zeros((self.members_number, 1))
+        internal_forces_vector = np.zeros((self.members_number, 1))
 
         #Tension and Deformation 
-        for i in range(len(bars)):
-            deformation, tension, internal_forces = bars[i].calculate(displacements_vector)
+        for i in range(self.members_number):
+            deformation, tension, internal_forces = self.members[i].calculate(displacements_vector)
             tensions_vector[i] = tension
             deformations_vector[i] = deformation
             internal_forces_vector[i] = internal_forces
@@ -126,32 +126,13 @@ class Solver:
 
         if self.solved:
             geraSaida(fille_name, self.target_loads_vector, self.displacements_vector, self.deformations_vector, self.internal_forces_vector, self.tensions_vector)
-            geraSaida_(fille_name, self.resultant_loads_vector, self.displacements_vector, self.deformations_vector, self.internal_forces_vector, self.tensions_vector)
         else:
             print("Solve first")
 
 solver = Solver()
 
-solver.load("entradas/entrada_triangulo")
-solver.plot()
-solver.solve()
-solver.plot()
-solver.write("saidas/saida_triangulo")
-
-solver.load("entradas/entrada_ponte") #http://www.abenge.org.br/cobenge/arquivos/12/artigos/434-Gustavo%20Cunha.pdf
+solver.load("entradas/entrada_ponte")
 solver.plot()
 solver.solve()
 solver.plot()
 solver.write("saidas/saida_ponte")
-
-solver.load("entradas/entrada_teste")
-solver.plot()
-solver.solve()
-solver.plot()
-solver.write("saidas/saida_teste")
-
-solver.load("entradas/entrada_teste_extra")
-solver.plot()
-solver.solve()
-solver.plot()
-solver.write("saidas/saida_teste_extra")
